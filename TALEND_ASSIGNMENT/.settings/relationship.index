@@ -1,1 +1,16 @@
-[ ]
+[ {
+  "baseItem" : {
+    "id" : "_x_SvUFhZEe-6CaFCBvj0ag",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_88W9AFhdEe-6CaFCBvj0ag",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_88W9AFhdEe-6CaFCBvj0ag - employment_data",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+} ]
