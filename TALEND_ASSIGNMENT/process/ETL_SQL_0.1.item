@@ -1165,15 +1165,15 @@
     <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="fsa_output1">
-      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="_id" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
+      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="_id" nullable="true" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="true" length="30" name="fsa" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
     </metadata>
-    <metadata name="fsa_output2">
-      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="_id" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
+    <metadata connector="FLOW" name="fsa_output2">
+      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="count_fsa" nullable="true" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="true" length="30" name="fsa" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1184,11 +1184,11 @@
       <uiProperties shellMaximized="true"/>
       <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
       <outputTables name="fsa_output1" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7._id " name="_id" type="id_Integer"/>
+        <mapperTableEntries expression="row7._id " name="_id" nullable="true" type="id_Integer"/>
         <mapperTableEntries expression="row7.fsa " name="fsa" nullable="true" type="id_String"/>
       </outputTables>
       <outputTables name="fsa_output2" sizeState="INTERMEDIATE">
-        <mapperTableEntries expression="row7._id " name="_id" type="id_Integer"/>
+        <mapperTableEntries expression="row7._id " name="count_fsa" nullable="true" type="id_Integer"/>
         <mapperTableEntries expression="row7.fsa " name="fsa" nullable="true" type="id_String"/>
       </outputTables>
       <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row7" sizeState="INTERMEDIATE">
@@ -1220,7 +1220,7 @@
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tLogRow_5">
-      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="_id" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
+      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="_id" nullable="true" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" key="true" length="30" name="fsa" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1228,8 +1228,73 @@
       </column>
     </metadata>
   </node>
-  <node componentName="tDBOutput" offsetLabelX="0" offsetLabelY="0" posX="680" posY="600">
+  <node componentName="tPostgresqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;localhost&quot;"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;Talend_Assignment_DB&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="PostgreSQL"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;public&quot;"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;postgres&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:KvTRdWsS/04yFf+W/UIR9faal4NafBs7lrRJhNg27j9S9oL4um0OeEDx"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;covid_fsa_analysis&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
+    <elementParameter field="CHECK" name="USE_SPATIAL_OPTIONS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="SPATIAL_INDEX" show="false" value="false"/>
+    <elementParameter field="CHECK" name="GEOMETRY_COLUMNS" show="false" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="postgres_id"/>
+    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="SAVE_POINT" show="false" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TABLE" name="ADD_COLS"/>
+    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
+    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="count_fsa"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="fsa"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
+    <elementParameter field="CHECK" name="CONVERT_COLUMN_TABLE_TO_LOWERCASE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
+    <metadata connector="FLOW" name="tDBOutput_1">
+      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="count_fsa" nullable="true" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="true" length="30" name="fsa" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+    <metadata connector="REJECT" name="REJECT">
+      <column comment="" defaultValue="nextval('covid_cases_table__id_seq'::regclass)" key="true" length="10" name="count_fsa" nullable="true" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="true" length="30" name="fsa" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" originalLength="-1" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -1283,27 +1348,26 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row7"/>
   </connection>
-  <connection connectorName="FLOW" label="fsa_output1" lineStyle="0" metaname="fsa_output1" offsetLabelX="0" offsetLabelY="0" source="tMap_3" target="tLogRow_5">
+  <connection connectorName="FLOW" label="fsa_output1" lineStyle="0" metaname="fsa_output1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tMap_3" target="tLogRow_5">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="fsa_output1"/>
+  </connection>
+  <connection connectorName="FLOW" label="fsa_output2" lineStyle="0" metaname="fsa_output2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tMap_3" target="tDBOutput_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="fsa_output2"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBOutput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_7e7565c8-a958-4f39-b61c-1c9706ebb532"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>sBwoXgM4eRH+LOU1jyPbwCuvC5ow0w6iMSIqNkBBfKNy9Q8iVxmNsnjgVM3l/dbuzVzGVzUoc15Z&#13;
-O6HLnMwgRw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_643a25a5-3da5-4683-b7cd-ccfea91d3759"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>WrMc3i4l1dxJn0AbJZOc/t12tZ6vmZpHXhyEgNPnT3LTy+IE4MbJs2J46xj/sQDN6b4EueVJd/NA&#13;
-vr4bcqZuSg==</DigestValue></Reference></SignedInfo><SignatureValue>hpL8AODyPsGYfLTVr/DJaMkxfuGNpHu5C05uSpCJapxv33NIMHJ2p+HwIqkKYWBu7Qc5GVIdQst5&#13;
-6atUHoX+tgSs60FX6bAjw9KLP2JpX7FqMVVJtw3Bl1y40IGOcjGscxTw1WXMJe82gDBRgRZ0HWFv&#13;
-FAF0F9Y0lnf/bC9EP5VM5w71WN5jyT+XPkgL/RVj/HUWus37gASaxTQ4FlDZj+tDrp44YX4kGRGG&#13;
-pLl7DcWWUzsNcDcsE7IF5HuGjkHRDuwmZpVi7c8WDVoSVVa9VNmgUAUAGtu7IvoAg592AdDZtS70&#13;
-CvcPNgQm8b/X7V3dSmCeWGAZYeaMyEEYnzbvSw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d14d955d-112c-417c-b37d-efcb3c56c1a6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>9ofkO3aIS3dxz3h61jUvertl9BKoJa6EZ6qyM2qSW48sESzVbhjJwPIuTq7P807oi8ELysC2Aq6D&#13;
+4d+7xUzQbQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_49e322c8-79f9-4d0f-bd7f-e16fd7ce2fd5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>D4PCKZnY7wnY6hiG0hAkxEbhxv9ccfdFLkLHtzEd11OFL2Uu228pBeupdJzuDFdtspVSrN0RWj0f&#13;
+IZMrWQZcOA==</DigestValue></Reference></SignedInfo><SignatureValue>aH7BptytpDjMVioh9bdhrHepja0BYmAunFttYNZVaN9U/qnfRgLNcC/MIgRX+Y14l8g70h5ZrgIX&#13;
+ACQzAPiXQ4hKKXv/59u4FE/1G8bfU6i06vephRGJUYza5JxuDflyog+wqGGWfTBgWpfUZqxT96MY&#13;
+M79RCtBh6zgm7ToME/L/3FXoOZni6ByanIpyOQoUVWnTmBohjyqUQMmWBal4bDfspsLqmRahDLq5&#13;
+wKGnJXFj2voP7+EaLXwBNSgvPCiSsky2/ZOhoH8Aa5BGhJj6mtikTUE712B1ggqNp1Dc18djpPmU&#13;
+q1DAwyKnOjZmvrNeurSdtPC6YwILbIxfhF2roA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1325,4 +1389,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_643a25a5-3da5-4683-b7cd-ccfea91d3759" Target="#_7e7565c8-a958-4f39-b61c-1c9706ebb532"><Timestamp>2024-08-13 21:43:45</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_49e322c8-79f9-4d0f-bd7f-e16fd7ce2fd5" Target="#_d14d955d-112c-417c-b37d-efcb3c56c1a6"><Timestamp>2024-08-13 22:10:02</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
