@@ -1,5 +1,20 @@
 [ {
   "baseItem" : {
+    "id" : "_BXxS8FkPEe-E74Gzdj2Ntw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_oLsPkFkPEe-E74Gzdj2Ntw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_oLsPkFkPEe-E74Gzdj2Ntw - covid_cases_table",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
     "id" : "_x_SvUFhZEe-6CaFCBvj0ag",
     "version" : "0.1",
     "type" : "job"
